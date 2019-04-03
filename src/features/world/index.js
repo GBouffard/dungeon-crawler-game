@@ -1,5 +1,6 @@
 import React from "react";
 import Map from "../map";
+import { tiles } from "../../data/maps/1";
 import Player from "../player";
 
 const World = () => (
@@ -11,7 +12,7 @@ const World = () => (
       margin: "20px auto"
     }}
   >
-    <Map />
+    <Map tiles={tiles} />
     <Player />
   </div>
 );
