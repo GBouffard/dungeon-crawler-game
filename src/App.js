@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import World from "./features/world";
+import React, { Component } from 'react'
+import World from './features/world'
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <div>
         <World />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
