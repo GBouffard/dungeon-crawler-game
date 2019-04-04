@@ -1,9 +1,26 @@
 import React from "react";
+import { SPRITE_SIZE } from "../../config/constants";
+import "./styles.css";
 
-const MapTile = ({ tile }) => <div>{tile}</div>;
+const MapTile = ({ tile }) => (
+  <div
+    className={`tile ${tile}`}
+    style={{
+      height: SPRITE_SIZE,
+      width: SPRITE_SIZE
+    }}
+  >
+    {tile}
+  </div>
+);
 
 const MapRow = ({ tiles }) => (
-  <div className="row">
+  <div
+    className="row"
+    style={{
+      height: SPRITE_SIZE
+    }}
+  >
     {tiles.map(tile => (
       <MapTile tile={tile} />
     ))}
