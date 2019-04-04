@@ -6,14 +6,15 @@ import "./styles.css";
 
 const getTileSprite = type => {
   switch (type) {
-    case 0:
-      return "grass";
-    case 5:
-      return "rock";
+    case 3: // nextTile < 5 is true so 3 is a passable tree;
     case 6:
       return "tree";
+    case 4:
+      return "chest";
+    case 5:
+      return "rock";
     default:
-      return "grass";
+      return "tile";
   }
 };
 
@@ -47,7 +48,7 @@ const Map = ({ tiles }) => (
       top: "0px",
       left: "0px",
       width: "800px",
-      height: "400px",
+      height: "480px",
       backgroundColor: "green",
       border: "4px solid white"
     }}
