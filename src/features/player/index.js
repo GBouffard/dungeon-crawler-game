@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import walkSprite from "./player_walk.png";
 import handleMovement from "./movement";
 
-const Player = props => (
+const Player = ({ position, spriteLocation }) => (
   <div
     style={{
       position: "absolute",
-      top: props.position[1],
-      left: props.position[0],
+      top: position[1],
+      left: position[0],
       backgroundImage: `url('${walkSprite}')`,
-      backgroundPosition: "0 0",
+      backgroundPosition: spriteLocation,
       width: "40px",
       height: "40px"
     }}

@@ -26,15 +26,40 @@ const getNewPosition = (oldPos, direction) => {
     case "SOUTH":
       return [oldPos[0], oldPos[1] + SPRITE_SIZE];
     default:
-      console.log(direction);
+    // switch statements should contain a default clause but this is unreachable.
   }
 };
 
-const dispatchMove = newPos => {
+const getWalkIndex = () => {
+  const walkIndex = store.getState().player.walkIndex;
+  return walkIndex >= 7 ? 0 : walkIndex + 1;
+};
+
+const getSpriteLocation = (direction, walkIndex) => {
+  switch (direction) {
+    case "SOUTH":
+      return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`;
+    case "EAST":
+      return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`;
+    case "WEST":
+      return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`;
+    case "NORTH":
+      return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 3}px`;
+    default:
+    // switch statements should contain a default clause but this is unreachable.
+  }
+};
+
+const dispatchMove = (direction, newPos) => {
+  const walkIndex = getWalkIndex();
+  const spriteLocation = getSpriteLocation(direction, walkIndex);
   store.dispatch({
     type: "MOVE_PLAYER",
     payload: {
-      position: newPos
+      position: newPos,
+      direction,
+      walkIndex,
+      spriteLocation
     }
   });
 };
@@ -46,7 +71,7 @@ const attemptMove = direction => {
     observeBoundaries(newPos) && observeImpassable(newPos);
 
   if (isAPossibleMove) {
-    dispatchMove(newPos);
+    dispatchMove(direction, newPos);
   }
 };
 
@@ -63,12 +88,11 @@ const handleKeyDown = e => {
     case 40:
       return attemptMove("SOUTH");
     default:
-      console.log(e.keyCode);
+    // switch statements should contain a default clause but this is unreachable.
   }
 };
 
 const handleMovement = player => {
-  // official KeyboardEvent - The keydown event is fired when a key is pressed down.
   window.addEventListener("keydown", e => {
     handleKeyDown(e);
   });
