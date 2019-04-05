@@ -26,3 +26,7 @@ cd dungeon-crawler-game
 yarn install
 yarn start
 ```
+
+## Deployed via Github Pages:
+
+[Guillaume's Dungeon Crawler Game](https://gbouffard.github.io/dungeon-crawler-game/)

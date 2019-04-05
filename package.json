@@ -2,7 +2,9 @@
   "name": "dungeon-crawler-game",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gbouffard.github.io/dungeon-crawler-game/",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
@@ -13,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "postinstall": "touch .env && echo \"SKIP_PREFLIGHT_CHECK=true\" > .env",
-    "eject": "react-scripts eject"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
